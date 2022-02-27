@@ -1,0 +1,50 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner num = new Scanner(System.in);
+        System.out.println("Enter your number in Decimals to convert to binary: ");
+        int number = num.nextInt(); //Entering your number in Decimals
+        int tha = 1, sum=0;
+        int counter=0;
+        int[] binary;
+        int[] Operend;
+        for(int i = 0;;i++){ //An Iteration loop, for calculating amount of numbers;
+            if(tha <= number){
+                tha = tha*2;
+                counter++; //Counting amount of numbers
+            }else{
+                tha=1;
+                break;
+            }
+        }
+        binary = new int[counter]; // Amount of numbers to show on the screen.
+        Operend = new int[counter];
+        for(int i=0;i<=counter;i++){
+            if(tha <= number){
+                Operend[i]=tha;
+                tha=tha*2;
+                //System.out.print(Operend[i]+ " ");
+            }else {
+                tha = 1;
+                break;
+            }
+        }
+        for(int i=counter - 1; number!=0;i--){//Calculating
+            if(number >= Operend[i]){
+                number = number - Operend[i];
+                //System.out.print(number + " ");
+                binary[i] = 1;
+
+            }else{
+                binary[i] = 0;
+            }
+        }
+        for(int i =counter - 1; i>=0;i--){ //Output the result on the screen
+         System.out.print(binary[i]);
+        }
+    }
+}
