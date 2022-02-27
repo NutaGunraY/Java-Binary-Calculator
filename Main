@@ -3,15 +3,12 @@ package com.company;
 import java.util.Scanner;
 
 public class Main {
-
-    public static void main(String[] args) {
+    public static void binary(int number, int tha, int counter, int[] binary, int[] Operend,int sum) {
         Scanner num = new Scanner(System.in);
         System.out.println("Enter your number in Decimals to convert to binary: ");
-        int number = num.nextInt(); //Entering your number in Decimals
-        int tha = 1, sum=0;
-        int counter=0;
-        int[] binary;
-        int[] Operend;
+        number = num.nextInt(); //Entering your number in Decimals
+        tha = 1; sum=0;
+        counter=0;
         for(int i = 0;;i++){ //An Iteration loop, for calculating amount of numbers;
             if(tha <= number){
                 tha = tha*2;
@@ -44,7 +41,51 @@ public class Main {
             }
         }
         for(int i =counter - 1; i>=0;i--){ //Output the result on the screen
-         System.out.print(binary[i]);
+            System.out.print(binary[i]);
+        }
+    }
+    static void decimal(int[] smth,int length){
+        int number=0,tha=1,counter=0,sum=0;
+        int[] binary = new int[0]; int[] Operend = new int[0];
+        Scanner num = new Scanner(System.in);
+        int a=1;
+        int c=0;
+        System.out.println("Enter the size of your array");
+        length = num.nextInt();
+        int res=0;
+        smth= new int[length];
+        for(int i = 0 ; i < length;i++){
+            smth[i] = num.nextInt();
+            if(smth[i] != 1 && smth[i] !=0){
+                System.out.println("Please enter the binary numbers");
+                break;
+            }
+            res+=smth[i]*a;
+            a*=2;
+        }
+        for(int i = 0; i < length; i++){
+            System.out.print(smth[i]);
+        }
+        System.out.print(" = " + res);
+    }
+    public static void main(String[] args) {
+        Scanner num = new Scanner(System.in);
+        int number=0,tha=1,counter=0,sum=0,length=0;
+        int[] binary = new int[0]; int[] Operend = new int[0]; int[]smth=new int[0];
+
+        int choice;
+        for(int i =0;;) {
+            System.out.println("Choice what method do you want to use - 1 for binary, 10 for decimal: ");
+            choice = num.nextInt();
+            if (choice == 1) {
+                binary(number, tha, counter, binary, Operend, sum);
+                break;
+            } else if (choice == 10) {
+                decimal(smth,length);
+                break;
+            } else {
+                System.out.println("Please enter the correct choices");
+            }
         }
     }
 }
